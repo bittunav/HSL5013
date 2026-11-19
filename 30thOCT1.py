@@ -1,0 +1,15 @@
+import numpy as np
+import matplotlib.pyplot as plt
+rng = np.random.default_rng(2026)
+x = rng.uniform(0, 1, 1000)
+y = rng.uniform(0, 1, (1000, 100)).mean(axis=1)
+plt.hist(x, bins=30, alpha=0.55, density=True, label="Single␣observations")
+plt.hist(y, bins=30, alpha=0.55, density=True, label="Sample␣means")
+plt.legend()
+plt.xlabel("Value")
+plt.ylabel("Density")
+plt.title("Uniform␣observations␣and␣sampling␣distribution␣of␣the␣mean")
+plt.tight_layout()
+plt.savefig("sampling_distribution_means.png", dpi=300)
+print("x:␣mean,␣variance␣=", x.mean(), x.var(ddof=1))
+print("y:␣mean,␣variance␣=", y.mean(), y.var(ddof=1))
